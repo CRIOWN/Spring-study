@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring创建对象 称之为beans
+    bean = 对象 == new Hello（）
+    id为对象名      Hello hello=new Hello()
+    class为对象类型  Hello类
+    property为对象内属性 Hello.str="Spring"
+    -->
+    <bean id="hello" class="com.criown.pojo.Hello">
+        <property name="str" value="Spring"></property>
+    </bean>
+</beans>

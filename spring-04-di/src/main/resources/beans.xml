@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.criown.pojo.Student">
+        <property name="name" value="宋天玥"></property>
+        <!--ref 引用beans.xml中已经声明的类-->
+        <property name="address" ref="address"/>
+
+        <!--数组注入-->
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+                <value>三国志</value>
+            </array>
+        </property>
+
+        <!--List注入-->
+        <property name="hobbys">
+          <list>
+              <value>听歌</value>
+              <value>读书</value>
+              <value>跳舞</value>
+          </list>
+        </property>
+
+        <!--map注入-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111"/>
+                <entry key="银行卡" value="222"/>
+                <entry key="学生证" value="333"/>
+            </map>
+        </property>
+
+        <!--Set注入-->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>CSGO</value>
+                <value>COC</value>
+            </set>
+        </property>
+        <!--空值-->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!--properties注入-->
+        <property name="info">
+            <props>
+                <prop key="学号">201910311123</prop>
+                <prop key="url">qweqweqwe</prop>
+                <prop key="username">sty</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="address" class="com.criown.pojo.Address">
+        <property name="address" value="上海"></property>
+    </bean>
+</beans>

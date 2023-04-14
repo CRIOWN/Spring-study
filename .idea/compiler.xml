@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-03-ioc" />
+        <module name="spring-02-hellospring" />
+        <module name="spring-04-di" />
+        <module name="spring-08-aop" />
+        <module name="spring-09-Mybatis" />
+        <module name="springmvc-02-hellomvc" />
+        <module name="spring-06-Annotation" />
+        <module name="springmvc-03-annotataion" />
+        <module name="springmvc-04-controller" />
+        <module name="springmvc-05-json" />
+        <module name="SpringMVC-01-serlvet" />
+        <module name="springmvc-06-ajax" />
+        <module name="springmvc-07-intercepter" />
+        <module name="spring-07-appconfig" />
+        <module name="spring-05-Autowired" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ajax" target="8" />
+      <module name="proxy" target="8" />
+      <module name="spring-01-loc" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

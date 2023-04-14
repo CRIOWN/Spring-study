@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--需要导入aop约束-->
+    <bean id="userService" class="com.criown.service.UserServiceImpl"></bean>
+    <bean id="log" class="com.criown.log.Log"/>
+    <bean id="afterlog" class="com.criown.log.AfterLog"/>
+
+<!--方式一 API接口-->
+<!--    &lt;!&ndash;使用原生API接口&ndash;&gt;
+    <aop:config>
+        &lt;!&ndash;切入点id  expression= 表达式 &ndash;&gt;
+        <aop:pointcut id="pointcut" expression="execution(* com.criown.service.UserServiceImpl.*(..))"/>
+
+        &lt;!&ndash;执行环绕增加&ndash;&gt;
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>
+        <aop:advisor advice-ref="afterlog" pointcut-ref="pointcut"/>
+    </aop:config>-->
+
+<!--方式二：自定义类-->
+<!--    <bean id="diy" class="com.criown.diy.DiyPointCut"/>
+    <aop:config>
+&lt;!&ndash;        aspect 被模块化的特殊对象（一个类）引用diy&ndash;&gt;
+        <aop:aspect ref="diy">
+            &lt;!&ndash;execution()是切点函数 可分为四个部分 * com.criown.service.UserServiceImpl.*(..)
+              * 第一个为返回值类型 *表示为任意类型
+               com.criown.service. 第二个为包名 表示范围是当前包下
+               UserServiceImpl. 第三个为类 *表示所有的类
+               *（..） 第四个为方法名 *表示所有方法 后面括号内为方法的参数 ..表示任意参数
+               &ndash;&gt;
+            <aop:pointcut id="point" expression="execution(* com.criown.service.UserServiceImpl.*(..))"/>
+            <aop:before method="before" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+
+        </aop:aspect> 
+    </aop:config>
+    -->
+
+<!--方式三：注解实现-->
+<!--    记得开启注解支持-->
+    <aop:aspectj-autoproxy/>
+    <bean id="annopoint" class="com.criown.diy.AnnotationPointCut"/>
+</beans>

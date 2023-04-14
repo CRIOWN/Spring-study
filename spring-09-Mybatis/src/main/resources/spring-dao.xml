@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--DataSource和sqlsession-->
+
+<!--数据源 ：spring自带jdbc-->
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=FALSE&amp;serverTimezone=GMT%2B8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"></property>
+        <!--绑定Mybatis-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--可代替mybatis-config.xml进行mybatis配置
+        可以直接写在下方配置 也可以写在config.xml里面导出来-->
+        <property name="mapperLocations" value="classpath:com/criown/mapper/*.xml"/>
+
+
+<!--        以上为必须配置（不用更改）-->
+    </bean>
+    <!-- 创建工厂-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--只能使用构造器注入-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+
+<!--这里是所用对象的映射 也可以写在汇总xml中-->
+    <bean id="userMapper" class="com.criown.mapper.UserMapperImpl">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+    <bean id="userMapper2" class="com.criown.mapper.UserMapperImpl2">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+</beans>

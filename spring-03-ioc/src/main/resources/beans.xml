@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--Spring创建对象 称之为beans
+bean = 对象 == new Hello（）
+id为对象名      Hello hello=new Hello()
+class为对象类型  Hello类
+property为对象内属性 Hello.str="Spring"
+ref 引用容器中创建好的对象
+-->
+<bean id="user" class="com.criown.pojo.User">
+<constructor-arg name="name" value="sty"/>
+</bean>
+<bean id="userT" class="com.criown.pojo.UserT" name="userT2"/>
+
+    <alias name="user" alias="useralias"/>
+</beans>
